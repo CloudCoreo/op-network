@@ -15,14 +15,6 @@ variables:
         required: true
         description: the cloudcoreo name of the private vpc subnets
         default: op-test-private-subnet
-    PUBLIC_ROUTE_NAME:
-        required: true
-        description: the name to give to the public route
-        default: op-test-public-route
-    PUBLIC_SUBNET_NAME:
-        required: true
-        description: the cloudcoreo name of the public vpc subnets
-        default: op-test-public-subnet
     BACKUP_BUCKET:
         default: cloudcoreo-opcito
         description: the name of the bucket in which we should back things up
@@ -55,6 +47,10 @@ variables:
         overrides: null
         required: true
         type: array
+    PUBLIC_SUBNET_NAME:
+        required: true
+        description: the cloudcoreo name of the public vpc subnets
+        default: op-test-public-subnet
     DNS_ZONE:
         default: hack.cloudcoreo.com
         description: the dns entry for the zone (i.e. example.com)
@@ -80,6 +76,10 @@ variables:
         overrides: null
         required: true
         type: null
+    PUBLIC_ROUTE_NAME:
+        required: true
+        description: the name to give to the public route
+        default: op-test-public-route
     TIMEZONE:
         default: America/Chicago
         value: America/Chicago
