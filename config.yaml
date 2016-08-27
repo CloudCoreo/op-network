@@ -36,7 +36,7 @@ variables:
         overrides: null
         required: true
     VPN_NAME:
-        default: opcito-vpn
+        default: op-vpn
         description: the name of the vpn server to launch
         overrides: null
         required: true
