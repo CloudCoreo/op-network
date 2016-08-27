@@ -2,7 +2,7 @@ variables:
     VPC_NAME:
         required: true
         description: the name of the VPC
-        default: op-test-vpc
+        default: op-vpc
     VPC_OCTETS:
         required: true
         description: the /16 net of the VPC to look for - i.e 123.123.0.0
@@ -10,11 +10,11 @@ variables:
     PRIVATE_ROUTE_NAME:
         required: true
         description: the name to give to the private route
-        default: op-test-private-route
+        default: op-private-route
     PRIVATE_SUBNET_NAME:
         required: true
         description: the cloudcoreo name of the private vpc subnets
-        default: op-test-private-subnet
+        default: op-private-subnet
     BACKUP_BUCKET:
         default: cloudcoreo-opcito
         description: the name of the bucket in which we should back things up
@@ -50,7 +50,7 @@ variables:
     PUBLIC_SUBNET_NAME:
         required: true
         description: the cloudcoreo name of the public vpc subnets
-        default: op-test-public-subnet
+        default: op-public-subnet
     DNS_ZONE:
         default: hack.cloudcoreo.com
         description: the dns entry for the zone (i.e. example.com)
@@ -125,7 +125,7 @@ variables:
     PUBLIC_ROUTE_NAME:
         required: true
         description: the name to give to the public route
-        default: op-test-public-route
+        default: op-public-route
     TIMEZONE:
         default: America/Chicago
         value: America/Chicago
@@ -139,7 +139,7 @@ variables:
         default: 20
         type: number
     PRIVATE_SUBNETS:
-        default: "STACK::coreo_aws_vpc_subnet.op-test-private-subnet.subnet_ids"
+        default: "STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
         required: true
         descripiton: comma seperated list of the private subnet ids
     VPN_BACKUP_CRON:
@@ -161,7 +161,7 @@ variables:
         required: true
         type: string
     VPN_DNS_PREFIX:
-        default: optico-vpn
+        default: op-vpn
         description: "the dns entry to create for the VPN server (<prefix>.<zone>)"
         overrides: null
         required: true
