@@ -15,67 +15,6 @@ variables:
         required: true
         description: the cloudcoreo name of the private vpc subnets
         default: op-private-subnet
-    BACKUP_BUCKET:
-        default: cloudcoreo-opcito
-        description: the name of the bucket in which we should back things up
-        overrides: null
-        required: true
-    BACKUP_BUCKET_REGION:
-        default: us-east-1
-        description: the region where there vpn backups bucket was created
-        overrides: null
-        required: true
-    VPN_KEY_BUCKET:
-        default: cloudcoreo-opcito
-        description: the name of the bucket in which we should retrieve and/or store vpn keys
-        overrides: null
-        required: true
-    VPN_KEY_BUCKET_REGION:
-        default: us-east-1
-        description: the region where there vpn key bucket was created
-        overrides: null
-        required: true
-    VPN_NAME:
-        default: op-vpn
-        description: the name of the vpn server to launch
-        overrides: null
-        required: true
-    VPN_ACCESS_CIDRS:
-        default:
-            - 0.0.0.0/0
-        description: null
-        overrides: null
-        required: true
-        type: array
-    PUBLIC_SUBNET_NAME:
-        required: true
-        description: the cloudcoreo name of the public vpc subnets
-        default: op-public-subnet
-    DNS_ZONE:
-        default: hack.cloudcoreo.com
-        description: the dns entry for the zone (i.e. example.com)
-        overrides: null
-        required: true
-        type: null
-    VPN_SSH_ACCESS_CIDRS:
-        default:
-            - 10.0.0.0/8
-        description: The cidrs from where you should be able to ssh in
-        overrides: null
-        required: true
-        type: array
-    VPN_INSTANCE_TYPE:
-        default: t2.micro
-        description: null
-        overrides: null
-        required: true
-        type: null
-    VPN_SSH_KEY_NAME:
-        default: george
-        description: What key should the vpn instance be launched with?
-        overrides: null
-        required: true
-        type: null
     NAT_SG_NAME:
         required: true
         description: the name of the security group to create for the NAT
@@ -122,6 +61,67 @@ variables:
         description: the maximum number of NAT instances to launch
         default: 1
         type: number
+    PUBLIC_SUBNET_NAME:
+        required: true
+        description: the cloudcoreo name of the public vpc subnets
+        default: op-public-subnet
+    BACKUP_BUCKET:
+        default: cloudcoreo-opcito
+        description: the name of the bucket in which we should back things up
+        overrides: null
+        required: true
+    BACKUP_BUCKET_REGION:
+        default: us-east-1
+        description: the region where there vpn backups bucket was created
+        overrides: null
+        required: true
+    VPN_KEY_BUCKET:
+        default: cloudcoreo-opcito
+        description: the name of the bucket in which we should retrieve and/or store vpn keys
+        overrides: null
+        required: true
+    VPN_KEY_BUCKET_REGION:
+        default: us-east-1
+        description: the region where there vpn key bucket was created
+        overrides: null
+        required: true
+    VPN_NAME:
+        default: op-vpn
+        description: the name of the vpn server to launch
+        overrides: null
+        required: true
+    VPN_ACCESS_CIDRS:
+        default:
+            - 0.0.0.0/0
+        description: null
+        overrides: null
+        required: true
+        type: array
+    DNS_ZONE:
+        default: hack.cloudcoreo.com
+        description: the dns entry for the zone (i.e. example.com)
+        overrides: null
+        required: true
+        type: null
+    VPN_SSH_ACCESS_CIDRS:
+        default:
+            - 10.0.0.0/8
+        description: The cidrs from where you should be able to ssh in
+        overrides: null
+        required: true
+        type: array
+    VPN_INSTANCE_TYPE:
+        default: t2.micro
+        description: null
+        overrides: null
+        required: true
+        type: null
+    VPN_SSH_KEY_NAME:
+        default: george
+        description: What key should the vpn instance be launched with?
+        overrides: null
+        required: true
+        type: null
     PUBLIC_ROUTE_NAME:
         required: true
         description: the name to give to the public route
@@ -133,15 +133,6 @@ variables:
         overrides: null
         required: true
         type: null
-    MONITORINTERVAL:
-        required: true
-        description: time in seconds between route checks
-        default: 20
-        type: number
-    PRIVATE_SUBNETS:
-        default: "STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
-        required: true
-        descripiton: comma seperated list of the private subnet ids
     VPN_BACKUP_CRON:
         default: "0 * * * *"
         description: the cron schedule for backups
@@ -166,20 +157,15 @@ variables:
         overrides: null
         required: true
         type: null
-    VPN_AMI_ID:
-        description: the ami id of the vpn
-        switch: "INSTANCE::region"
-        cases:
-            us-east-1: ami-1ecae776
-            us-west-1: ami-d114f295
-            us-west-2: ami-e7527ed7
-            eu-west-1: ami-a10897d6
-            eu-central-1: ami-a8221fb5
-            ap-southeast-1: ami-68d8e93a
-            ap-northeast-1: ami-cbf90ecb
-            ap-southeast-2: ami-fd9cecc7
-            sa-east-1: ami-b52890a8
-        type: case
+    MONITORINTERVAL:
+        required: true
+        description: time in seconds between route checks
+        default: 20
+        type: number
+    PRIVATE_SUBNETS:
+        default: "STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
+        required: true
+        descripiton: comma seperated list of the private subnet ids
     NAT_AMI:
         description: the ami id of the nat
         switch: "INSTANCE::region"
@@ -198,19 +184,33 @@ variables:
         required: false
         description: The name of the key to use for the nat box
         default: george
+    VPN_AMI_ID:
+        description: the ami id of the vpn
+        switch: "INSTANCE::region"
+        cases:
+            us-east-1: ami-1ecae776
+            us-west-1: ami-d114f295
+            us-west-2: ami-e7527ed7
+            eu-west-1: ami-a10897d6
+            eu-central-1: ami-a8221fb5
+            ap-southeast-1: ami-68d8e93a
+            ap-northeast-1: ami-cbf90ecb
+            ap-southeast-2: ami-fd9cecc7
+            sa-east-1: ami-b52890a8
+        type: case
     DATADOG_KEY:
         default: null
         value: null
         description: "If you have a datadog key, enter it here and we will install the agent"
         overrides: null
         required: false
-    LOGFILE:
-        required: false
-        description: ha-nat log file
-        default: /var/log/ha-nat.log
     VPN_ROUTING_CIDR:
         default: 10.0.0.0
         description: This is the cidr of the network cidr the VPN should on your network. i.e. all traffic to this cidr will be routed through the VPN. set to 0.0.0.0 for all traffic. This works in conjunction with the VPN_ROUTING_MASK variable.
     VPN_ROUTING_MASK:
         default: 8
         description: This is the cidr mask of the network cidr the VPN should on your network. i.e. all traffic to this cidr will be routed through the VPN. set to 0 for all traffic. This works in conjunction with the VPN_ROUTING_CIDR variable.
+    LOGFILE:
+        required: false
+        description: ha-nat log file
+        default: /var/log/ha-nat.log
