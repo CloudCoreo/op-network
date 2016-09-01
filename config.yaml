@@ -133,15 +133,6 @@ variables:
         overrides: null
         required: true
         type: null
-    MONITORINTERVAL:
-        required: true
-        description: time in seconds between route checks
-        default: 20
-        type: number
-    PRIVATE_SUBNETS:
-        default: "STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
-        required: true
-        descripiton: comma seperated list of the private subnet ids
     VPN_BACKUP_CRON:
         default: "0 * * * *"
         description: the cron schedule for backups
@@ -166,6 +157,15 @@ variables:
         overrides: null
         required: true
         type: null
+    MONITORINTERVAL:
+        required: true
+        description: time in seconds between route checks
+        default: 20
+        type: number
+    PRIVATE_SUBNETS:
+        default: "STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
+        required: true
+        descripiton: comma seperated list of the private subnet ids
     NAT_AMI:
         description: the ami id of the nat
         switch: "INSTANCE::region"
@@ -204,13 +204,13 @@ variables:
         description: "If you have a datadog key, enter it here and we will install the agent"
         overrides: null
         required: false
-    LOGFILE:
-        required: false
-        description: ha-nat log file
-        default: /var/log/ha-nat.log
     VPN_ROUTING_CIDR:
         default: 10.0.0.0
         description: This is the cidr of the network cidr the VPN should on your network. i.e. all traffic to this cidr will be routed through the VPN. set to 0.0.0.0 for all traffic. This works in conjunction with the VPN_ROUTING_MASK variable.
     VPN_ROUTING_MASK:
         default: 8
         description: This is the cidr mask of the network cidr the VPN should on your network. i.e. all traffic to this cidr will be routed through the VPN. set to 0 for all traffic. This works in conjunction with the VPN_ROUTING_CIDR variable.
+    LOGFILE:
+        required: false
+        description: ha-nat log file
+        default: /var/log/ha-nat.log
