@@ -181,7 +181,7 @@ variables:
             sa-east-1: ami-63fa417e
         type: case
     NAT_KEY:
-        required: false
+        required: true
         description: The name of the key to use for the nat box
         default:
     VPN_AMI_ID:
