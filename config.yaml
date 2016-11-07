@@ -170,33 +170,39 @@ variables:
         description: the ami id of the nat
         switch: "INSTANCE::region"
         cases:
-            us-east-1: ami-303b1458
-            us-west-1: ami-ada746e9
-            us-west-2: ami-69ae8259
-            eu-west-1: ami-ef76e898
-            eu-central-1: ami-1e073a03
-            ap-southeast-1: ami-1a9dac48
-            ap-northeast-1: ami-11dc2a11
-            ap-southeast-2: ami-43ee9e79
-            sa-east-1: ami-63fa417e
+            us-east-1: ami-863b6391
+            us-east-2: ami-8d5a00e8
+            us-west-1: ami-f4e8a394
+            us-west-2: ami-d0c066b0
+            ap-south-1: ami-93b5c1fc
+            ap-northeast-2: ami-b036e2de
+            ap-southeast-1: ami-df50f1bc
+            ap-southeast-2: ami-ae714dcd
+            ap-northeast-1: ami-c50cafa4
+            eu-central-1: ami-fd619992
+            eu-west-1: ami-509dd623
+            sa-east-1: ami-98b824f4
         type: case
     NAT_KEY:
         required: true
         description: The name of the key to use for the nat box
         default:
     VPN_AMI_ID:
-        description: the ami id of the vpn
+        description: the ami id for the VPN server
         switch: "INSTANCE::region"
         cases:
-            us-east-1: ami-1ecae776
-            us-west-1: ami-d114f295
-            us-west-2: ami-e7527ed7
-            eu-west-1: ami-a10897d6
-            eu-central-1: ami-a8221fb5
-            ap-southeast-1: ami-68d8e93a
-            ap-northeast-1: ami-cbf90ecb
-            ap-southeast-2: ami-fd9cecc7
-            sa-east-1: ami-b52890a8
+            us-east-1: ami-b73b63a0
+            us-east-2: ami-58277d3d
+            us-west-1: ami-23e8a343
+            us-west-2: ami-5ec1673e
+            ap-south-1: ami-34b4c05b
+            ap-northeast-2: ami-983ce8f6
+            ap-southeast-1: ami-b953f2da
+            ap-southeast-2: ami-db704cb8
+            ap-northeast-1: ami-0c11b26d
+            eu-central-1: ami-f9619996
+            eu-west-1: ami-9398d3e0
+            sa-east-1: ami-97831ffb 
         type: case
     DATADOG_KEY:
         default: null
@@ -214,3 +220,9 @@ variables:
     VPN_ROUTING_MASK:
         default: 8
         description: This is the cidr mask of the network cidr the VPN should on your network. i.e. all traffic to this cidr will be routed through the VPN. set to 0 for all traffic. This works in conjunction with the VPN_ROUTING_CIDR variable.
+
+# VPN AMI's are for:
+#   Amazon Linux AMI 2016.09.0 was released on 2016-09-27.
+
+# NAT AMI's are for:
+#   Amazon Linux AMI 2016.09.0.20161028 x86_64 VPC NAT HVM EB
