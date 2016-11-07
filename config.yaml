@@ -66,22 +66,22 @@ variables:
         description: the cloudcoreo name of the public vpc subnets
         default: op-public-subnet
     BACKUP_BUCKET:
-        default: cloudcoreo-opcito
+        default:
         description: the name of the bucket in which we should back things up
         overrides: null
         required: true
     BACKUP_BUCKET_REGION:
-        default: us-east-1
+        default:
         description: the region where there vpn backups bucket was created
         overrides: null
         required: true
     VPN_KEY_BUCKET:
-        default: cloudcoreo-opcito
+        default:
         description: the name of the bucket in which we should retrieve and/or store vpn keys
         overrides: null
         required: true
     VPN_KEY_BUCKET_REGION:
-        default: us-east-1
+        default:
         description: the region where there vpn key bucket was created
         overrides: null
         required: true
@@ -98,7 +98,7 @@ variables:
         required: true
         type: array
     DNS_ZONE:
-        default: hack.cloudcoreo.com
+        default:
         description: the dns entry for the zone (i.e. example.com)
         overrides: null
         required: true
@@ -117,7 +117,7 @@ variables:
         required: true
         type: null
     VPN_SSH_KEY_NAME:
-        default: george
+        default:
         description: What key should the vpn instance be launched with?
         overrides: null
         required: true
@@ -127,8 +127,8 @@ variables:
         description: the name to give to the public route
         default: op-public-route
     TIMEZONE:
-        default: America/Chicago
-        value: America/Chicago
+        default: America/Los_Angeles
+        value: America/Los_Angeles
         description: the timezone the servers should come up in
         overrides: null
         required: true
@@ -183,7 +183,7 @@ variables:
     NAT_KEY:
         required: false
         description: The name of the key to use for the nat box
-        default: george
+        default:
     VPN_AMI_ID:
         description: the ami id of the vpn
         switch: "INSTANCE::region"
