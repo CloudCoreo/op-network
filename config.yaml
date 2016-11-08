@@ -139,7 +139,7 @@ variables:
         default: 20
         type: number
     PRIVATE_SUBNETS:
-        default: "STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
+        default: "COMPOSITE::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids"
         required: true
         descripiton: comma seperated list of the private subnet ids
     VPN_BACKUP_CRON:
@@ -155,7 +155,7 @@ variables:
         required: true
         type: null
     REGION:
-        default: "INSTANCE::region"
+        default: "PLAN::region"
         description: the region we are launching in
         overrides: null
         required: true
@@ -168,7 +168,7 @@ variables:
         type: null
     NAT_AMI:
         description: the ami id of the nat
-        switch: "INSTANCE::region"
+        switch: "PLAN::region"
         cases:
             us-east-1: ami-863b6391
             us-east-2: ami-8d5a00e8
@@ -189,7 +189,7 @@ variables:
         default:
     VPN_AMI_ID:
         description: the ami id for the VPN server
-        switch: "INSTANCE::region"
+        switch: "PLAN::region"
         cases:
             us-east-1: ami-b73b63a0
             us-east-2: ami-58277d3d
