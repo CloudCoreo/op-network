@@ -13,7 +13,26 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 ## Required variables with no default
 
-**None**
+### `BACKUP_BUCKET`:
+  * description: the name of the bucket in which we should back things up
+
+### `BACKUP_BUCKET_REGION`:
+  * description: the region where there vpn backups bucket was created
+
+### `VPN_KEY_BUCKET`:
+  * description: the name of the bucket in which we should retrieve and/or store vpn keys
+
+### `VPN_KEY_BUCKET_REGION`:
+  * description: the region where there vpn key bucket was created
+
+### `DNS_ZONE`:
+  * description: the dns entry for the zone (i.e. example.com)
+
+### `VPN_SSH_KEY_NAME`:
+  * description: What key should the vpn instance be launched with?
+
+### `NAT_KEY`:
+  * description: The name of the key to use for the nat box
 
 
 ## Required variables with default
@@ -82,26 +101,6 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
   * default: op-public-subnet
 
 
-### `BACKUP_BUCKET`:
-  * description: the name of the bucket in which we should back things up
-  * default: cloudcoreo-opcito
-
-
-### `BACKUP_BUCKET_REGION`:
-  * description: the region where there vpn backups bucket was created
-  * default: us-east-1
-
-
-### `VPN_KEY_BUCKET`:
-  * description: the name of the bucket in which we should retrieve and/or store vpn keys
-  * default: cloudcoreo-opcito
-
-
-### `VPN_KEY_BUCKET_REGION`:
-  * description: the region where there vpn key bucket was created
-  * default: us-east-1
-
-
 ### `VPN_NAME`:
   * description: the name of the vpn server to launch
   * default: op-vpn
@@ -110,11 +109,6 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 ### `VPN_ACCESS_CIDRS`:
   * description: 
   * default: 0.0.0.0/0
-
-### `DNS_ZONE`:
-  * description: the dns entry for the zone (i.e. example.com)
-  * default: hack.cloudcoreo.com
-
 
 ### `VPN_SSH_ACCESS_CIDRS`:
   * description: The cidrs from where you should be able to ssh in
@@ -125,11 +119,6 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
   * default: t2.micro
 
 
-### `VPN_SSH_KEY_NAME`:
-  * description: What key should the vpn instance be launched with?
-  * default: george
-
-
 ### `PUBLIC_ROUTE_NAME`:
   * description: the name to give to the public route
   * default: op-public-route
@@ -137,7 +126,7 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 ### `TIMEZONE`:
   * description: the timezone the servers should come up in
-  * default: America/Chicago
+  * default: America/Los_Angeles
 
 
 ### `MONITORINTERVAL`:
@@ -146,7 +135,7 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 ### `PRIVATE_SUBNETS`:
   * description: 
-  * default: STACK::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids
+  * default: COMPOSITE::coreo_aws_vpc_subnet.op-private-subnet.subnet_ids
 
 
 ### `VPN_BACKUP_CRON`:
@@ -160,7 +149,7 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 ### `REGION`:
   * description: the region we are launching in
-  * default: INSTANCE::region
+  * default: PLAN::region
 
 ### `VPN_DNS_PREFIX`:
   * description: the dns entry to create for the VPN server (<prefix>.<zone>)
@@ -169,11 +158,6 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 
 ## Optional variables with no default
-
-### `NAT_KEY`:
-  * description: The name of the key to use for the nat box
-  * default: george
-
 
 ### `LOGFILE`:
   * description: ha-nat log file
@@ -195,7 +179,7 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
   * description: the ami id of the nat
 
 ### `VPN_AMI_ID`:
-  * description: the ami id of the vpn
+  * description: the ami id for the VPN server
 
 ### `DATADOG_KEY`:
   * description: If you have a datadog key, enter it here and we will install the agent
