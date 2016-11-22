@@ -157,7 +157,7 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 
 
-## Optional variables with no default
+## Optional variables with default
 
 ### `LOGFILE`:
   * description: ha-nat log file
@@ -173,7 +173,7 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
   * description: This is the cidr mask of the network cidr the VPN should on your network. i.e. all traffic to this cidr will be routed through the VPN. set to 0 for all traffic. This works in conjunction with the VPN_ROUTING_CIDR variable.
 
 
-## Optional variables with default
+## Optional variables with no default
 
 ### `NAT_AMI`:
   * description: the ami id of the nat
