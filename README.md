@@ -200,5 +200,5 @@ Layers a Public and Private VPC, a NAT server, and a VPN server
 
 
 ## Icon
-
+![icon](https://raw.githubusercontent.com/CloudCoreo/op-network/master/images/icon.png "icon")
 
