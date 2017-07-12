@@ -182,6 +182,7 @@ variables:
             eu-central-1: ami-fd619992
             eu-west-1: ami-509dd623
             sa-east-1: ami-98b824f4
+            us-gov-west-1: ami-b2d056d3
         type: case
     NAT_KEY:
         required: true
@@ -203,6 +204,7 @@ variables:
             eu-central-1: ami-f9619996
             eu-west-1: ami-9398d3e0
             sa-east-1: ami-97831ffb 
+            us-gov-west-1: ami-b2d056d3
         type: case
     DATADOG_KEY:
         default: null
